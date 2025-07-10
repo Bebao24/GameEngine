@@ -12,5 +12,6 @@
 
 /* Core */
 #include <Engine/Core/Log.h>
+#include <Engine/Core/File.h>
 
 

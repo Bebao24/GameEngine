@@ -10,6 +10,11 @@ int main()
 
     Engine::Input::Init(&window);
 
+    // Test file reading
+    std::string content = Engine::File::ReadFile("file.txt");
+    // Print out the content
+    ENGINE_LOG_INFO("File content: \n%s\n", content.c_str());
+
     while (!window.WindowShouldClose())
     {
         if (Engine::Input::IsMouseButtonPressed(ENGINE_MOUSE_BUTTON_1))
