@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include <glad/glad.h>
 #include <Engine/Core/File.h>
+#include <Engine/Core/Log.h>
 
 namespace Engine
 {
@@ -9,7 +10,16 @@ namespace Engine
         // Read the vertex & fragment shaders files
         std::string vertexContent = File::ReadFile(vertexPath);
         std::string fragmentContent = File::ReadFile(fragmentPath);
-        // TODO: Error handling if failed to open vertex & fragment shaders files
+
+        if (vertexContent.empty())
+        {
+            return;
+        }
+
+        if (fragmentContent.empty())
+        {
+            return;
+        }
 
         // Create the shader program
         uint32_t programId = CreateShader(vertexContent, fragmentContent);
@@ -28,7 +38,25 @@ namespace Engine
         glShaderSource(id, 1, &src, nullptr);
         glCompileShader(id);
 
-        // TODO: Error handling
+        // Error handling
+        int success;
+        glGetShaderiv(id, GL_COMPILE_STATUS, &success);
+
+        if (!success)
+        {
+            // Get the error message's length
+            int len;
+            glGetShaderiv(id, GL_INFO_LOG_LENGTH, &len);
+
+            // Allocate memory for the buffer
+            char* messageBuffer = (char*)malloc(len * sizeof(char));
+            // Copy the error message
+            glGetShaderInfoLog(id, len, &len, messageBuffer);
+            ENGINE_LOG_ERROR("Failed to compile %s shader!\n", (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment"));
+            ENGINE_LOG_ERROR("Error: %s", messageBuffer);
+            glDeleteShader(id);
+            return 0;
+        }
 
         return id;
     }
