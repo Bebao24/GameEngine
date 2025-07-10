@@ -1,6 +1,13 @@
 #include <iostream>
 #include <Engine/Engine.h>
 
+#include <Engine/Graphics/Renderer/OpenGL/VertexArray.h>
+#include <Engine/Graphics/Renderer/OpenGL/VertexBuffer.h>
+#include <Engine/Graphics/Renderer/OpenGL/IndexBuffer.h>
+#include <Engine/Graphics/Renderer/OpenGL/Shader.h>
+
+#include <glad/glad.h>
+
 int main()
 {
     Engine::Logger::Init();
@@ -10,10 +17,26 @@ int main()
 
     Engine::Input::Init(&window);
 
-    // Test file reading
-    std::string content = Engine::File::ReadFile("file.txt");
-    // Print out the content
-    ENGINE_LOG_INFO("File content: \n%s\n", content.c_str());
+    // Create a triangle
+
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0f,  0.5f, 0.0f
+    };
+
+    Engine::VertexArray VAO;
+    VAO.Bind();
+    
+    Engine::VertexBuffer VBO(vertices, sizeof(vertices));
+    
+    Engine::VertexBufferLayout layout;
+    layout.AddElement(Engine::DataType::Float, 3, "a_Pos");
+    
+    VAO.AddVertexBuffer(VBO, layout);
+
+    Engine::Shader Shader("Assets/Shaders/shader.vert", "Assets/Shaders/shader.frag");
+    Shader.Bind();
 
     while (!window.WindowShouldClose())
     {
@@ -29,6 +52,9 @@ int main()
         }
         
         window.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+        // Later, we will add a renderer so that we don't need glad.h
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         window.SwapBuffers();
 

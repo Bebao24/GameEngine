@@ -11,7 +11,7 @@ namespace Engine
     void VertexBufferLayout::AddElement(DataType type, uint32_t count, std::string name)
     {
         m_Elements.push_back({ type, count, false, name });
-        m_Stride += GetDataTypeSize(type);
+        m_Stride += GetDataTypeSize(type) * count;
     }
 }
 
