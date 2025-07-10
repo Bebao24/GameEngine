@@ -8,7 +8,8 @@ I know this is more like a framework, but I will try to make it an actual game e
 For now, you probably can't use this game engine since there's no documentations. <br>
 
 ### Platform (Operating systems)
-Currently, this game engine is only supporting linux (or at least natively). I guess you can run this on MacOS with a little bit of tweaking.
+Currently, this game engine is only supporting linux (or at least natively).
+I think it will work with MacOS. I haven't tested it yet.
 On Windows, you cannot compile this since you will need GLFW installed on your system.
 
 ## Plans
