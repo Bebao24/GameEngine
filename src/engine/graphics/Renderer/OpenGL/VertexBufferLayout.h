@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include <glad/glad.h>
+
 namespace Engine
 {
     // TODO: Maybe move this into another file since it doesn't belong here!
@@ -43,7 +45,7 @@ namespace Engine
 
         void AddElement(DataType type, uint32_t count, std::string name);
 
-        inline std::vector<VertexBufferElement> GetElementsArray() const { return m_Elements; }
+        inline const std::vector<VertexBufferElement>& GetElementsArray() const { return m_Elements; }
         inline uint32_t GetStride() const { return m_Stride; }
 
     private:
