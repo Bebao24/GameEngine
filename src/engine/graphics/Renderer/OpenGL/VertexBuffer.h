@@ -3,8 +3,8 @@
 
 namespace Engine
 {
-class VertexBuffer
-{
+    class VertexBuffer
+    {
     public:
         VertexBuffer(const void* data, uint32_t size);
         ~VertexBuffer();
