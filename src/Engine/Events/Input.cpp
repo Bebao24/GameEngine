@@ -1,5 +1,4 @@
-#include "input.h"
-#include <engine/graphics/window.h>
+#include "Input.h"
 #include <GLFW/glfw3.h>
 
 namespace Engine

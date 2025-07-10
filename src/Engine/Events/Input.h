@@ -1,5 +1,5 @@
 #pragma once
-#include <engine/graphics/window.h>
+#include <Engine/Graphics/Window.h>
 
 namespace Engine
 {
