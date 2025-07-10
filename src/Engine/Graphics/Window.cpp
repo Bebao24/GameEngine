@@ -40,6 +40,16 @@ namespace Engine
             ENGINE_LOG_INFO("GLFW initialized!");
         }
 
+        // Set OpenGL version
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        // For MacOS X
+    #ifdef __APPLE__
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    #endif
+
         // Create the window
         m_Window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
         if (!m_Window)
@@ -63,6 +73,11 @@ namespace Engine
         }
 
         ENGINE_LOG_INFO("GLAD initialized!");
+
+        // Print out OpenGL info
+        ENGINE_LOG_INFO("OpenGL version: %s", glGetString(GL_VERSION));
+        ENGINE_LOG_INFO("OpenGL vendor: %s", glGetString(GL_VENDOR));
+        ENGINE_LOG_INFO("OpenGL renderer: %s", glGetString(GL_RENDERER));
 
         // Store the window's data into the window ptr
         glfwSetWindowUserPointer(m_Window, &m_Data);
