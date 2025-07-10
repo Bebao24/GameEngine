@@ -21,7 +21,6 @@ namespace Engine
         Window(int width, int height, std::string title);
         ~Window();
 
-        void ClearColor(float r, float g, float b, float a) const;
         void PollEvents() const;
         void SwapBuffers() const;
 

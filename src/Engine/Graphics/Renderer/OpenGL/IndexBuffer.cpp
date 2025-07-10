@@ -8,6 +8,8 @@ namespace Engine
         glGenBuffers(1, &m_BufferId);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_BufferId);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * count, data, GL_STATIC_DRAW);
+
+        m_Count = count;
     }
 
     IndexBuffer::~IndexBuffer()

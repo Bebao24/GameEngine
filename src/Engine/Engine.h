@@ -4,6 +4,7 @@
 
 /* Graphics */
 #include <Engine/Graphics/Window.h>
+#include <Engine/Graphics/Renderer/Renderer.h>
 
 /* Events */
 #include <Engine/Events/Input.h>

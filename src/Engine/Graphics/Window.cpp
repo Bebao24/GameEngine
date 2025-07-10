@@ -97,12 +97,6 @@ namespace Engine
         });
     }
 
-    void Window::ClearColor(float r, float g, float b, float a) const
-    {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(r, g, b, a);
-    }
-
     void Window::PollEvents() const
     {
         glfwPollEvents();

@@ -6,8 +6,6 @@
 #include <Engine/Graphics/Renderer/OpenGL/IndexBuffer.h>
 #include <Engine/Graphics/Renderer/OpenGL/Shader.h>
 
-#include <glad/glad.h>
-
 int main()
 {
     Engine::Logger::Init();
@@ -25,6 +23,10 @@ int main()
         0.0f,  0.5f, 0.0f
     };
 
+    uint32_t indices[] = {
+        1, 2, 3
+    };
+
     Engine::VertexArray VAO;
     VAO.Bind();
     
@@ -35,8 +37,10 @@ int main()
     
     VAO.AddVertexBuffer(VBO, layout);
 
+    Engine::IndexBuffer IBO(indices, 3);
+    VAO.SetIndexBuffer(IBO);
+
     Engine::Shader Shader("Assets/Shaders/shader.vert", "Assets/Shaders/shader.frag");
-    Shader.Bind();
 
     while (!window.WindowShouldClose())
     {
@@ -51,10 +55,9 @@ int main()
             ENGINE_LOG_TRACE("S key pressed!");
         }
         
-        window.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        Engine::Renderer::Clear(0.0f, 0.0f, 0.0f);
 
-        // Later, we will add a renderer so that we don't need glad.h
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        Engine::Renderer::Draw(VAO, Shader);
 
         window.SwapBuffers();
 

@@ -4,29 +4,10 @@
 #include <vector>
 
 #include <glad/glad.h>
+#include <Engine/Core/DataType.h>
 
 namespace Engine
 {
-    // TODO: Maybe move this into another file since it doesn't belong here!
-    enum class DataType
-    {
-        None = 0,
-        Float,
-        Int,
-        Bool
-    };
-
-    static uint32_t GetDataTypeSize(DataType type)
-    {
-        switch (type)
-        {
-            case DataType::Float: return 4;
-            case DataType::Int: return 4;
-            case DataType::Bool: return 1;
-            default: return 0;
-        }
-    }
-
     struct VertexBufferElement
     {
         DataType type; // Data type

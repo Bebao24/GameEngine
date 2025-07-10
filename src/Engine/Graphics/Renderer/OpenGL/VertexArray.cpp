@@ -1,19 +1,9 @@
 #include "VertexArray.h"
 #include <glad/glad.h>
+#include <Engine/Core/DataType.h>
 
 namespace Engine
 {
-    static GLenum GetOpenGLType(DataType type)
-    {
-        switch (type)
-        {
-            case DataType::Float: return GL_FLOAT;
-            case DataType::Int: return GL_INT;
-            case DataType::Bool: return GL_BOOL;
-            default: return 0;
-        }
-    }
-
     VertexArray::VertexArray()
     {
         glGenVertexArrays(1, &m_ArrayId);
@@ -43,6 +33,14 @@ namespace Engine
         }
 
         buffer.Unbind();
+    }
+
+    void VertexArray::SetIndexBuffer(const IndexBuffer& buffer)
+    {
+        Bind();
+
+        buffer.Bind();
+        m_IndexBuffer = std::make_shared<IndexBuffer>(buffer);
     }
 
     void VertexArray::Bind() const

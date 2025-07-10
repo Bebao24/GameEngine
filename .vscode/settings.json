@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "vertexarray.h": "c"
+        "vertexarray.h": "c",
+        "random": "cpp"
     }
 }
