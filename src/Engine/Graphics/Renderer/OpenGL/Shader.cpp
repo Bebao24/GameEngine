@@ -101,6 +101,12 @@ namespace Engine
         glUniform1i(GetUniformLocation(name), v0);
     }
 
+    void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& trans)
+    {
+        // glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &trans[0][0]);
+        glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(trans));
+    }
+
     uint32_t Shader::GetUniformLocation(const std::string& name)
     {
         int location = glGetUniformLocation(m_ProgramId, name.c_str());

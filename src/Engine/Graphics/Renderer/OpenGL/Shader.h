@@ -2,6 +2,10 @@
 #include <cstdint>
 #include <string>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Engine
 {
     class Shader
@@ -23,6 +27,8 @@ namespace Engine
         void SetUniform2i(const std::string& name, int v0, int v1);
         void SetUniform1i(const std::string& name, int v0);
         
+        // Matrix
+        void SetUniformMat4f(const std::string& name, const glm::mat4& trans);
 
         void Bind() const;
         void Unbind() const;

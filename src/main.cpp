@@ -47,6 +47,9 @@ int main()
     float color = 0.0f;
     float increment = 0.05f;
 
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
     while (!window.WindowShouldClose())
     {
         if (Engine::Input::IsMouseButtonPressed(ENGINE_MOUSE_BUTTON_1))
@@ -62,6 +65,7 @@ int main()
         
         Engine::Renderer::Clear(0.0f, 0.0f, 0.0f);
 
+        Shader.SetUniformMat4f("u_transformMatrix", trans);
         Shader.SetUniform4f("u_Color", color, 0.5f, 0.7f, 1.0f);
         Engine::Renderer::Draw(VAO, Shader);
 
