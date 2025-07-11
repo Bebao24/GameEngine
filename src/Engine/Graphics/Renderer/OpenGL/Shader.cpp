@@ -61,6 +61,22 @@ namespace Engine
         return id;
     }
 
+    void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
+    {
+        glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
+    }
+
+    uint32_t Shader::GetUniformLocation(const std::string& name)
+    {
+        int location = glGetUniformLocation(m_ProgramId, name.c_str());
+        if (location == -1)
+        {
+            ENGINE_LOG_WARN("Uniform %s doesn't exist!");
+        }
+
+        return location;
+    }
+
     void Shader::Bind() const
     {
         glUseProgram(m_ProgramId);
