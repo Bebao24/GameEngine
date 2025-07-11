@@ -1,11 +1,14 @@
 #include "Renderer.h"
 #include <Engine/Core/Log.h>
+#include "Renderer2D.h"
 
 namespace Engine
 {
-    void Renderer::Init()
+    void Renderer::Init(Window* window)
     {
         // Enable OpenGL features (e.g blending, culling, etc)
+        // Initialize Renderer2D
+        Renderer2D::Init(window);
     }
 
     void Renderer::Clear(float r, float g, float b, float a)
@@ -27,6 +30,11 @@ namespace Engine
         {
             ENGINE_LOG_WARN("No index buffer found!");
         }
+    }
+
+    void Renderer::Shutdown()
+    {
+        Renderer2D::Shutdown();
     }
 }
 
