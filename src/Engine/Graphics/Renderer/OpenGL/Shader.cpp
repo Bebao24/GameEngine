@@ -109,12 +109,20 @@ namespace Engine
 
     uint32_t Shader::GetUniformLocation(const std::string& name)
     {
+        // Check for the name location in the cache
+        if (m_UniformCache.find(name) != m_UniformCache.end())
+        {
+            return m_UniformCache[name];
+        }
+
         int location = glGetUniformLocation(m_ProgramId, name.c_str());
         if (location == -1)
         {
             ENGINE_LOG_WARN("Uniform %s doesn't exist!");
         }
 
+        // Add the name in the cache
+        m_UniformCache[name] = location;
         return location;
     }
 

@@ -6,6 +6,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <unordered_map>
+
 namespace Engine
 {
     class Shader
@@ -39,6 +41,7 @@ namespace Engine
         uint32_t GetUniformLocation(const std::string& name);
 
         uint32_t m_ProgramId;
+        std::unordered_map<std::string, int> m_UniformCache; // Optimization
     };
 }
 
