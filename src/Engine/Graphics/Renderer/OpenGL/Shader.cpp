@@ -66,6 +66,41 @@ namespace Engine
         glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
     }
 
+    void Shader::SetUniform3f(const std::string& name, float v0, float v1, float v2)
+    {
+        glUniform3f(GetUniformLocation(name), v0, v1, v2);
+    }
+
+    void Shader::SetUniform2f(const std::string& name, float v0, float v1)
+    {
+        glUniform2f(GetUniformLocation(name), v0, v1);
+    }
+
+    void Shader::SetUniform1f(const std::string& name, float v0)
+    {
+        glUniform1f(GetUniformLocation(name), v0);
+    }
+
+    void Shader::SetUniform4i(const std::string& name, int v0, int v1, int v2, int v3)
+    {
+        glUniform4i(GetUniformLocation(name), v0, v1, v2, v3);
+    }
+
+    void Shader::SetUniform3i(const std::string& name, int v0, int v1, int v2)
+    {
+        glUniform3i(GetUniformLocation(name), v0, v1, v2);
+    }
+
+    void Shader::SetUniform2i(const std::string& name, int v0, int v1)
+    {
+        glUniform2i(GetUniformLocation(name), v0, v1);
+    }
+
+    void Shader::SetUniform1i(const std::string& name, int v0)
+    {
+        glUniform1i(GetUniformLocation(name), v0);
+    }
+
     uint32_t Shader::GetUniformLocation(const std::string& name)
     {
         int location = glGetUniformLocation(m_ProgramId, name.c_str());
