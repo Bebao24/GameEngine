@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include <Engine/Core/Log.h>
+#include <glad/glad.h>
 #include "Renderer2D.h"
 
 namespace Engine

@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 
-#include <glad/glad.h>
 #include <Engine/Core/DataType.h>
 
 namespace Engine
