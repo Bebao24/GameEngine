@@ -10,6 +10,7 @@ namespace Engine
             float y;
 
             Vector2(float x, float y) :x(x), y(y) {}
+            Vector2(float scalar) :x(scalar), y(scalar) {}
         };
     }
 }

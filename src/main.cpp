@@ -13,7 +13,7 @@ int main()
     // Initialize Renderer
     Engine::Renderer::Init(&window);
 
-    Engine::Math::Vector2 quadPos(100.0f, 100.0f);
+    Engine::Math::Vector2 quadPos(100.0f);
 
     float velocity = 1.5f;
 
@@ -38,7 +38,7 @@ int main()
         
         Engine::Renderer::Clear(0.0f, 0.0f, 0.0f);
 
-        Engine::Renderer2D::DrawQuad(quadPos, {100.0f, 100.0f});
+        Engine::Renderer2D::DrawQuad(quadPos, {100.0f});
 
         window.SwapBuffers();
 
