@@ -110,14 +110,10 @@ namespace Engine
         s_Data.quadVAO->Unbind();
     }
 
-    void Renderer2D::DrawTriangle(const Math::Vector2& position, const Math::Vector2& size)
+    void Renderer2D::DrawTriangle(const Math::Vector2& position, const Math::Vector2& size, const Math::Vector4& color)
     {
         glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f)); // Move
         transform *= glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
-
-        // TODO: Pass in a color from the user
-        
-        glm::vec4 color(1.0f, 0.0f, 0.0f, 1.0f);
 
         // Setup the shader
         s_Data.shader->Bind();
@@ -129,14 +125,10 @@ namespace Engine
         Renderer::Draw(*s_Data.triangleVAO, *s_Data.shader);
     }
 
-    void Renderer2D::DrawQuad(const Math::Vector2& position, const Math::Vector2& size)
+    void Renderer2D::DrawQuad(const Math::Vector2& position, const Math::Vector2& size, const Math::Vector4& color)
     {
         glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f)); // Move
         transform *= glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
-
-        // TODO: Pass in a color from the user
-        
-        glm::vec4 color(1.0f, 0.0f, 0.0f, 1.0f);
 
         // Setup the shader
         s_Data.shader->Bind();

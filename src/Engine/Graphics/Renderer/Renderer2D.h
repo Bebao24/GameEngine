@@ -10,8 +10,8 @@ namespace Engine
         static void Init(Window* window);
         static void Shutdown();
 
-        static void DrawTriangle(const Math::Vector2& position, const Math::Vector2& size);
-        static void DrawQuad(const Math::Vector2& position, const Math::Vector2& size);
+        static void DrawTriangle(const Math::Vector2& position, const Math::Vector2& size, const Math::Vector4& color);
+        static void DrawQuad(const Math::Vector2& position, const Math::Vector2& size, const Math::Vector4& color);
     };
 }
 
