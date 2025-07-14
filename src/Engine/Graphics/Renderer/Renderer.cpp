@@ -25,7 +25,7 @@ namespace Engine
 
         if (vao.GetIndexBuffer() != nullptr)
         {
-            glDrawArrays(GL_TRIANGLES, 0, vao.GetIndexBuffer()->GetCount());
+            glDrawElements(GL_TRIANGLES, vao.GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
         }
         else
         {

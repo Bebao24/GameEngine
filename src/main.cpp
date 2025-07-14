@@ -13,8 +13,8 @@ int main()
     // Initialize Renderer
     Engine::Renderer::Init(&window);
 
-    float squareX = 100.0f;
-    float squareY = 100.0f;
+    float quadX = 100.0f;
+    float quadY = 100.0f;
 
     float velocity = 1.5f;
 
@@ -22,24 +22,24 @@ int main()
     {
         if (Engine::Input::IsKeyPressed(ENGINE_KEY_W))
         {
-            squareY += velocity;
+            quadY += velocity;
         }
         if (Engine::Input::IsKeyPressed(ENGINE_KEY_S))
         {
-            squareY -= velocity;
+            quadY -= velocity;
         }
         if (Engine::Input::IsKeyPressed(ENGINE_KEY_A))
         {
-            squareX -= velocity;
+            quadX -= velocity;
         }
         if (Engine::Input::IsKeyPressed(ENGINE_KEY_D))
         {
-            squareX += velocity;
+            quadX += velocity;
         }
         
         Engine::Renderer::Clear(0.0f, 0.0f, 0.0f);
 
-        Engine::Renderer2D::DrawTriangle(squareX, squareY, 100.0f, 100.0f);
+        Engine::Renderer2D::DrawQuad(quadX, quadY, 100.0f, 100.0f);
 
         window.SwapBuffers();
 

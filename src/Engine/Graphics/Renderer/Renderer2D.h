@@ -10,6 +10,7 @@ namespace Engine
         static void Shutdown();
 
         static void DrawTriangle(float x, float y, float width, float height);
+        static void DrawQuad(float x, float y, float width, float height);
     };
 }
 
