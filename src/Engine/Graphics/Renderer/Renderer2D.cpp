@@ -110,10 +110,10 @@ namespace Engine
         s_Data.quadVAO->Unbind();
     }
 
-    void Renderer2D::DrawTriangle(float x, float y, float width, float height)
+    void Renderer2D::DrawTriangle(const Math::Vector2& position, const Math::Vector2& size)
     {
-        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, 0.0f)); // Move
-        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(width, height, 1.0f));
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f)); // Move
+        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
 
         // TODO: Pass in a color from the user
         
@@ -129,10 +129,10 @@ namespace Engine
         Renderer::Draw(*s_Data.triangleVAO, *s_Data.shader);
     }
 
-    void Renderer2D::DrawQuad(float x, float y, float width, float height)
+    void Renderer2D::DrawQuad(const Math::Vector2& position, const Math::Vector2& size)
     {
-        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, 0.0f)); // Move
-        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(width, height, 1.0f));
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f)); // Move
+        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
 
         // TODO: Pass in a color from the user
         
