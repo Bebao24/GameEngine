@@ -34,6 +34,7 @@ namespace Engine
         uint32_t quadIndices[6];
 
         Shader* shader;
+        Shader* circleShader;
 
         Window* window;
         
@@ -104,8 +105,9 @@ namespace Engine
 
         s_Data.projection = glm::ortho(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
 
-        // Load in the shader
+        // Load in the shaders
         s_Data.shader = new Shader("Assets/Shaders/shader.vert", "Assets/Shaders/shader.frag");
+        s_Data.circleShader = new Shader("Assets/Shaders/circle.vert", "Assets/Shaders/circle.frag");
 
         s_Data.quadVAO->Unbind();
     }
@@ -140,6 +142,25 @@ namespace Engine
         Renderer::Draw(*s_Data.quadVAO, *s_Data.shader);
     }
 
+    void Renderer2D::DrawCircle(const Math::Vector2& position, float radius, const Math::Vector4& color)
+    {
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f));
+
+        // Calculate the size based off the radius & scale the circle
+        float circleWidth = radius * 2;
+        float circleHeight = radius * 2;
+        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(circleWidth, circleHeight, 1.0f));
+
+        // Setup the shader
+        s_Data.circleShader->Bind();
+        s_Data.circleShader->SetUniform4f("u_Color", color.x, color.y, color.z, color.w);
+        s_Data.circleShader->SetUniformMat4f("u_projectionMatrix", s_Data.projection);
+        s_Data.circleShader->SetUniformMat4f("u_transformMatrix", transform);
+
+        // Draw it
+        Renderer::Draw(*s_Data.quadVAO, *s_Data.circleShader);
+    }
+
     void Renderer2D::Shutdown()
     {
         delete s_Data.triangleVAO;
@@ -151,6 +172,7 @@ namespace Engine
         delete s_Data.quadIBO;
 
         delete s_Data.shader;
+        delete s_Data.circleShader;
     }
 }
 

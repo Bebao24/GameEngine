@@ -39,6 +39,7 @@ int main()
         Engine::Renderer::Clear(0.0f, 0.0f, 0.0f);
 
         Engine::Renderer2D::DrawQuad(quadPos, {100.0f}, {1.0f, 1.0f, 0.0f, 1.0f});
+        Engine::Renderer2D::DrawCircle({200.0f}, 100.0f, {1.0f, 1.0f, 0.0f, 1.0f});
 
         window.SwapBuffers();
 
