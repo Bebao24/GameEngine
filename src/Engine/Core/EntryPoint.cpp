@@ -3,6 +3,8 @@
 
 int main()
 {
+    Engine::Logger::Init();
+
     // Create a sandbox app
     SandboxApp* app = new SandboxApp();
 
