@@ -4,7 +4,6 @@ A 2D game engine written in C++. It is still in early development. <br>
 It uses OpenGL for rendering and GLFW for creating window.
 
 ## Status
-I know this is more like a framework, but I will try to make it an actual game engine. <br>
 For now, you probably can't use this game engine since there's no documentations. <br>
 
 ### Platform (Operating systems)
