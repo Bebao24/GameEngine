@@ -1,12 +1,13 @@
 #pragma once
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
-#include "OpenGL/Shader.h"
 
 #include "../Window.h"
 
 namespace Engine
 {
+    class Shader;
+
     class Renderer
     {
     public:
