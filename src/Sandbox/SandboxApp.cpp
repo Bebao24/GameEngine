@@ -14,7 +14,6 @@ SandboxApp::~SandboxApp()
 void SandboxApp::Start()
 {
     // Initialize everything
-
     Engine::Input::Init(&m_Window);
     Engine::Renderer::Init(&m_Window);
 }
