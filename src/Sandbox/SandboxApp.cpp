@@ -19,8 +19,9 @@ void SandboxApp::Start()
     Engine::Renderer::Init(&m_Window);
 }
 
-void SandboxApp::Update()
+void SandboxApp::Update(float deltaTime)
 {
+    (void)deltaTime;
     Engine::Renderer2D::DrawCircle({50.0f}, 25.0f, {1.0f, 0.0f, 0.0f, 1.0f});
 }
 

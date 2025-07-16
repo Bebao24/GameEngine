@@ -8,7 +8,7 @@ public:
     ~SandboxApp();
 
     void Start();
-    void Update();
+    void Update(float deltaTime);
 
     Engine::Window& GetWindow() { return m_Window; }
 
