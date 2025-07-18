@@ -14,6 +14,7 @@ public:
 
 private:
     Engine::Window m_Window;
+    Engine::Camera m_Camera;
 };
 
 

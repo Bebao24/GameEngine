@@ -6,6 +6,7 @@
 #include <Engine/Graphics/Window.h>
 #include <Engine/Graphics/Renderer/Renderer.h>
 #include <Engine/Graphics/Renderer/Renderer2D.h>
+#include <Engine/Graphics/Renderer/Camera.h>
 
 /* Events */
 #include <Engine/Events/Input.h>

@@ -37,8 +37,6 @@ namespace Engine
         Shader* circleShader;
 
         Window* window;
-        
-        glm::mat4 projection;
     };
 
     static Renderer2DData s_Data;
@@ -103,13 +101,31 @@ namespace Engine
         int windowHeight = window->GetHeight();
         s_Data.window = window;
 
-        s_Data.projection = glm::ortho(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
-
         // Load in the shaders
         s_Data.shader = new Shader("Assets/Shaders/shader.vert", "Assets/Shaders/shader.frag");
         s_Data.circleShader = new Shader("Assets/Shaders/circle.vert", "Assets/Shaders/circle.frag");
 
         s_Data.quadVAO->Unbind();
+    }
+
+    void Renderer2D::BeginScene(const Camera& camera)
+    {
+        // Set the view projection matrix
+        glm::mat4 viewMatrix = camera.GetView();
+        glm::mat4 projMatrix = camera.GetProjection();
+
+        s_Data.shader->Bind();
+        s_Data.shader->SetUniformMat4f("u_viewMatrix", viewMatrix);
+        s_Data.shader->SetUniformMat4f("u_projectionMatrix", projMatrix);
+
+        s_Data.circleShader->Bind();
+        s_Data.circleShader->SetUniformMat4f("u_viewMatrix", viewMatrix);
+        s_Data.circleShader->SetUniformMat4f("u_projectionMatrix", projMatrix);
+    }
+
+    void Renderer2D::EndScene()
+    {
+
     }
 
     void Renderer2D::DrawTriangle(const Math::Vector2& position, const Math::Vector2& size, const Math::Vector4& color)
@@ -120,7 +136,6 @@ namespace Engine
         // Setup the shader
         s_Data.shader->Bind();
         s_Data.shader->SetUniform4f("u_Color", color.x, color.y, color.z, color.w);
-        s_Data.shader->SetUniformMat4f("u_projectionMatrix", s_Data.projection);
         s_Data.shader->SetUniformMat4f("u_transformMatrix", transform);
 
         // Draw it
@@ -135,7 +150,6 @@ namespace Engine
         // Setup the shader
         s_Data.shader->Bind();
         s_Data.shader->SetUniform4f("u_Color", color.x, color.y, color.z, color.w);
-        s_Data.shader->SetUniformMat4f("u_projectionMatrix", s_Data.projection);
         s_Data.shader->SetUniformMat4f("u_transformMatrix", transform);
 
         // Draw it
@@ -154,7 +168,6 @@ namespace Engine
         // Setup the shader
         s_Data.circleShader->Bind();
         s_Data.circleShader->SetUniform4f("u_Color", color.x, color.y, color.z, color.w);
-        s_Data.circleShader->SetUniformMat4f("u_projectionMatrix", s_Data.projection);
         s_Data.circleShader->SetUniformMat4f("u_transformMatrix", transform);
 
         // Draw it
