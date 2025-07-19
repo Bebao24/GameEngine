@@ -1,8 +1,8 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -O2 -std=c++20 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor/glm
+CXXFLAGS = -Wall -Wextra -O2 -std=c++20 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor/glm -I src/vendor/stb_image
 
 CC = gcc
-CFLAGS = -Wall -Wextra -O2 -std=c11 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor/glm
+CFLAGS = -Wall -Wextra -O2 -std=c11 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor/glm -I src/vendor/stb_image
 
 LD = g++
 LDFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
