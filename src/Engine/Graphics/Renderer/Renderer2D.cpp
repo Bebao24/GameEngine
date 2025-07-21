@@ -35,6 +35,7 @@ namespace Engine
 
         Shader* shader;
         Shader* circleShader;
+        Shader* textureShader;
 
         Window* window;
     };
@@ -104,6 +105,7 @@ namespace Engine
         // Load in the shaders
         s_Data.shader = new Shader("Assets/Shaders/shader.vert", "Assets/Shaders/shader.frag");
         s_Data.circleShader = new Shader("Assets/Shaders/circle.vert", "Assets/Shaders/circle.frag");
+        s_Data.textureShader = new Shader("Assets/Shaders/texture.vert", "Assets/Shaders/texture.frag");
 
         s_Data.quadVAO->Unbind();
     }
@@ -121,6 +123,10 @@ namespace Engine
         s_Data.circleShader->Bind();
         s_Data.circleShader->SetUniformMat4f("u_viewMatrix", viewMatrix);
         s_Data.circleShader->SetUniformMat4f("u_projectionMatrix", projMatrix);
+
+        s_Data.textureShader->Bind();
+        s_Data.textureShader->SetUniformMat4f("u_viewMatrix", viewMatrix);
+        s_Data.textureShader->SetUniformMat4f("u_projectionMatrix", projMatrix);
     }
 
     void Renderer2D::EndScene()
@@ -186,6 +192,7 @@ namespace Engine
 
         delete s_Data.shader;
         delete s_Data.circleShader;
+        delete s_Data.textureShader;
     }
 }
 
