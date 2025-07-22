@@ -1,7 +1,7 @@
 #include "SandboxApp.h"
 
 SandboxApp::SandboxApp()
-    :m_Window(640, 480, "Engine"), m_Texture("Assets/Textures/OpenGL.png")
+    :m_Window(640, 480, "Engine")
 {
 
 }
@@ -24,7 +24,7 @@ void SandboxApp::Start()
     m_Camera = Engine::Camera(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
 
     // Load in a texture
-    // m_Texture = Engine::Texture("Assets/Textures/OpenGL.png");
+    m_Texture.Load("Assets/Textures/OpenGL.png");
 }
 
 void SandboxApp::Update(float deltaTime)

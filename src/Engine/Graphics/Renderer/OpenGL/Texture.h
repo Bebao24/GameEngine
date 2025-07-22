@@ -7,16 +7,16 @@ namespace Engine
     class Texture
     {
     public:
-        Texture(const std::string& path);
+        Texture();
         ~Texture();
-
-        Texture() = default;
 
         void Bind(uint32_t slot = 0) const;
         void Unbind() const;
 
         inline int GetWidth() { return m_Width; }
         inline int GetHeight() { return m_Height; }
+
+        void Load(const std::string& path);
 
     private:
         uint32_t m_TextureId;
