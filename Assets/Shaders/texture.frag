@@ -1,7 +1,7 @@
 #version 330 core
 out vec4 FragColor;
 
-out vec2 v_TexCoords;
+in vec2 v_TexCoords;
 uniform sampler2D u_Texture; // Texture Id
 
 void main()

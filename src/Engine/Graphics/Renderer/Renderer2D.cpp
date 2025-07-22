@@ -16,6 +16,12 @@ namespace Engine
         glm::vec3 position;
     };
 
+    struct VertexTexture
+    {
+        glm::vec3 position;
+        glm::vec2 texCoords;
+    };
+
     // Renderer 2D data
     struct Renderer2DData
     {
@@ -30,7 +36,7 @@ namespace Engine
         VertexBuffer* quadVBO;
         IndexBuffer* quadIBO;
 
-        Vertex quadVertex[4];
+        VertexTexture quadVertex[4];
         uint32_t quadIndices[6];
 
         Shader* shader;
@@ -53,10 +59,16 @@ namespace Engine
         s_Data.triangleIndices[1] = 1;
         s_Data.triangleIndices[2] = 2;
 
-        s_Data.quadVertex[0] = {{ 0.0f, 0.0f, 0.0f }};
-        s_Data.quadVertex[1] = {{ 1.0f, 0.0f, 0.0f }};
-        s_Data.quadVertex[2] = {{ 1.0f, 1.0f, 0.0f }};
-        s_Data.quadVertex[3] = {{ 0.0f, 1.0f, 0.0f }};
+        s_Data.quadVertex[0].position = { 0.0f, 0.0f, 0.0f };
+        s_Data.quadVertex[1].position = { 1.0f, 0.0f, 0.0f };
+        s_Data.quadVertex[2].position = { 1.0f, 1.0f, 0.0f };
+        s_Data.quadVertex[3].position = { 0.0f, 1.0f, 0.0f };
+
+        // Texture coords
+        s_Data.quadVertex[0].texCoords = { 0.0f, 0.0f };
+        s_Data.quadVertex[1].texCoords = { 1.0f, 0.0f };
+        s_Data.quadVertex[2].texCoords = { 1.0f, 1.0f };
+        s_Data.quadVertex[3].texCoords = { 0.0f, 1.0f };
 
         // First triangle
         s_Data.quadIndices[0] = 0;
@@ -81,6 +93,7 @@ namespace Engine
 
         VertexBufferLayout quadLayout;
         quadLayout.AddElement(DataType::Float, 3, "Position");
+        quadLayout.AddElement(DataType::Float, 2, "TexCoords");
 
         s_Data.triangleVAO->Bind();
         s_Data.triangleVAO->AddVertexBuffer(*s_Data.triangleVBO, triangleLayout);
@@ -160,6 +173,24 @@ namespace Engine
 
         // Draw it
         Renderer::Draw(*s_Data.quadVAO, *s_Data.shader);
+    }
+
+    void Renderer2D::DrawQuad(const Math::Vector2& position, const Math::Vector2& size, const Texture& texture)
+    {
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0.0f)); // Move
+        transform *= glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
+
+        // Setup the shader
+        s_Data.textureShader->Bind();
+
+        // Bind the texture
+        texture.Bind();
+        
+        s_Data.textureShader->SetUniform1i("u_Texture", 0); // Slot 0
+        s_Data.textureShader->SetUniformMat4f("u_transformMatrix", transform);
+        
+        // Draw it
+        Renderer::Draw(*s_Data.quadVAO, *s_Data.textureShader);
     }
 
     void Renderer2D::DrawCircle(const Math::Vector2& position, float radius, const Math::Vector4& color)

@@ -7,7 +7,7 @@ namespace Engine
     Texture::Texture(const std::string& path)
         :m_TextureId(0), m_Path(path), m_TextureBuffer(nullptr), m_Width(0), m_Height(0), m_BPP(0)
     {
-        stbi_set_flip_vertically_on_load(1);
+        // stbi_set_flip_vertically_on_load(1);
         // Load the texture
         m_TextureBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
 

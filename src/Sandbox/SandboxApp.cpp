@@ -1,7 +1,7 @@
 #include "SandboxApp.h"
 
 SandboxApp::SandboxApp()
-    :m_Window(640, 480, "Engine")
+    :m_Window(640, 480, "Engine"), m_Texture("Assets/Textures/OpenGL.png")
 {
 
 }
@@ -22,6 +22,9 @@ void SandboxApp::Start()
 
     // Create a camera
     m_Camera = Engine::Camera(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
+
+    // Load in a texture
+    // m_Texture = Engine::Texture("Assets/Textures/OpenGL.png");
 }
 
 void SandboxApp::Update(float deltaTime)
@@ -50,7 +53,8 @@ void SandboxApp::Update(float deltaTime)
     Engine::Renderer2D::BeginScene(m_Camera);
 
     Engine::Renderer2D::DrawCircle({50.0f}, 25.0f, {1.0f, 0.0f, 0.0f, 1.0f});
-    Engine::Renderer2D::DrawQuad({100.0f}, 50.0f, {1.0f, 1.0f, 0.0f, 1.0f});
+    Engine::Renderer2D::DrawQuad({100.0f}, {50.0f}, {1.0f, 1.0f, 0.0f, 1.0f});
+    Engine::Renderer2D::DrawQuad({400.0f}, {150.0f}, m_Texture);
 
     Engine::Renderer2D::EndScene();
 }

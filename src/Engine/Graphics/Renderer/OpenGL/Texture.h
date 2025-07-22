@@ -10,6 +10,8 @@ namespace Engine
         Texture(const std::string& path);
         ~Texture();
 
+        Texture() = default;
+
         void Bind(uint32_t slot = 0) const;
         void Unbind() const;
 
