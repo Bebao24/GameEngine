@@ -32,24 +32,23 @@ void SandboxApp::Update(float deltaTime)
     Engine::Math::Vector2 cameraPos = m_Camera.GetPosition();
     if (Engine::Input::IsKeyPressed(ENGINE_KEY_W))
     {
-        cameraPos.y -= 5.0f;
+        cameraPos.y -= 200.0f * deltaTime;
     }
     if (Engine::Input::IsKeyPressed(ENGINE_KEY_S))
     {
-        cameraPos.y += 5.0f;
+        cameraPos.y += 200.0f * deltaTime;
     }
     if (Engine::Input::IsKeyPressed(ENGINE_KEY_A))
     {
-        cameraPos.x -= 5.0f;
+        cameraPos.x -= 200.0f * deltaTime;
     }
     if (Engine::Input::IsKeyPressed(ENGINE_KEY_D))
     {
-        cameraPos.x += 5.0f;
+        cameraPos.x += 200.0f * deltaTime;
     }
 
     m_Camera.SetPosition(cameraPos);
 
-    (void)deltaTime;
     Engine::Renderer2D::BeginScene(m_Camera);
 
     Engine::Renderer2D::DrawCircle({50.0f}, 25.0f, {1.0f, 0.0f, 0.0f, 1.0f});
