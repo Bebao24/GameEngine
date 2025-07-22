@@ -1,6 +1,7 @@
 #include "Texture.h"
 #include <glad/glad.h>
 #include <stb_image.h>
+#include <Engine/Core/Log.h>
 
 namespace Engine
 {
@@ -16,6 +17,11 @@ namespace Engine
         // stbi_set_flip_vertically_on_load(1);
         // Load the texture
         m_TextureBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
+        if (!m_TextureBuffer)
+        {
+            ENGINE_LOG_ERROR("Failed to load texture %s!", path.c_str());
+            return;
+        }
 
         glGenTextures(1, &m_TextureId);
         glBindTexture(GL_TEXTURE_2D, m_TextureId);
@@ -32,10 +38,7 @@ namespace Engine
         glBindTexture(GL_TEXTURE_2D, 0);
 
         // Finally, free the texture buffer
-        if (m_TextureBuffer)
-        {
-            stbi_image_free(m_TextureBuffer);
-        }
+        stbi_image_free(m_TextureBuffer);
     }
 
     Texture::~Texture()
