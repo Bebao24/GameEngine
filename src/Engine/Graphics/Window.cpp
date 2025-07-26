@@ -101,6 +101,12 @@ namespace Engine
         // Handle events
         glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
         {
+            // Prevent unused warnings
+            (void)window;
+            (void)scancode;
+            (void)action;
+            (void)mods;
+
             KeyPressedEvent event(key);
             Application::Get().OnEvent(event);
         });
