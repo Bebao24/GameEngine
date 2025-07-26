@@ -9,6 +9,7 @@ public:
 
     void Start();
     void Update(float deltaTime);
+    void OnEvent(Event& event);
 
     Engine::Window& GetWindow() { return m_Window; }
 

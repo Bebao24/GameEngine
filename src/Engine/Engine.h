@@ -12,6 +12,7 @@
 #include <Engine/Events/Input.h>
 #include <Engine/Events/KeyCodes.h>
 #include <Engine/Events/MouseCodes.h>
+#include <Engine/Events/Event.h>
 
 /* Core */
 #include <Engine/Core/Log.h>
