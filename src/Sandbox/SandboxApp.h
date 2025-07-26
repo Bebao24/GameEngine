@@ -1,7 +1,7 @@
 #pragma once
 #include <Engine/Engine.h>
 
-class SandboxApp
+class SandboxApp : public Engine::Application
 {
 public:
     SandboxApp();
@@ -9,7 +9,7 @@ public:
 
     void Start();
     void Update(float deltaTime);
-    void OnEvent(Event& event);
+    void OnEvent(Engine::Event& event) override;
 
     Engine::Window& GetWindow() { return m_Window; }
 

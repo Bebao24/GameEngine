@@ -58,7 +58,7 @@ void SandboxApp::Update(float deltaTime)
     Engine::Renderer2D::EndScene();
 }
 
-void SandboxApp::OnEvent(Event& event)
+void SandboxApp::OnEvent(Engine::Event& event)
 {
 
 }
