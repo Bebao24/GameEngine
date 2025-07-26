@@ -60,6 +60,11 @@ void SandboxApp::Update(float deltaTime)
 
 void SandboxApp::OnEvent(Engine::Event& event)
 {
+    if (event.GetEventType() == Engine::EventType::KeyPressed)
+    {
+        auto& keyEvent = static_cast<Engine::KeyPressedEvent&>(event);
 
+        ENGINE_LOG_TRACE("Key code: %d", keyEvent.GetKeyCode());
+    }
 }
 

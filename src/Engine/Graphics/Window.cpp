@@ -1,5 +1,7 @@
 #include "Window.h"
 #include <Engine/Core/Log.h>
+#include <Engine/Events/KeyPressedEvent.h>
+#include <Engine/Core/Application.h>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -95,6 +97,14 @@ namespace Engine
             data.width = width;
             data.height = height;
         });
+
+        // Handle events
+        glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        {
+            KeyPressedEvent event(key);
+            Application::Get().OnEvent(event);
+        });
+
     }
 
     void Window::PollEvents() const
