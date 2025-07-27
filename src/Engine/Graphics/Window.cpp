@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <Engine/Core/Log.h>
 #include <Engine/Events/KeyPressedEvent.h>
+#include <Engine/Events/MouseEvent.h>
 #include <Engine/Core/Application.h>
 
 #include <glad/glad.h>
@@ -108,6 +109,14 @@ namespace Engine
             (void)mods;
 
             KeyPressedEvent event(key);
+            Application::Get().OnEvent(event);
+        });
+
+        glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double mouseX, double mouseY)
+        {
+            (void)window;
+
+            MouseMovedEvent event((float)mouseX, (float)mouseY);
             Application::Get().OnEvent(event);
         });
 

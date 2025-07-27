@@ -63,8 +63,15 @@ void SandboxApp::OnEvent(Engine::Event& event)
     if (event.GetEventType() == Engine::EventType::KeyPressed)
     {
         auto& keyEvent = static_cast<Engine::KeyPressedEvent&>(event);
+        (void)keyEvent;
 
-        ENGINE_LOG_TRACE("Key code: %d", keyEvent.GetKeyCode());
+        // ENGINE_LOG_TRACE("Key code: %d", keyEvent.GetKeyCode());
+    }
+
+    if (event.GetEventType() == Engine::EventType::MouseMoved)
+    {
+        auto& mouseEvent = static_cast<Engine::MouseMovedEvent&>(event);
+        ENGINE_LOG_TRACE("Mouse x: %f, y: %f", mouseEvent.GetMouseX(), mouseEvent.GetMouseY());
     }
 }
 
