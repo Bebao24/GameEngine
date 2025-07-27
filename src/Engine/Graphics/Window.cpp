@@ -123,11 +123,23 @@ namespace Engine
         glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int actions, int mods)
         {
             (void)window;
-            (void)actions;
             (void)mods;
 
-            MouseButtonEvent event(button);
-            Application::Get().OnEvent(event);
+            switch (actions)
+            {
+                case GLFW_PRESS:
+                {
+                    MouseButtonPressedEvent mousePressedEvent(button);
+                    Application::Get().OnEvent(mousePressedEvent);
+                    break;
+                }
+                case GLFW_RELEASE:
+                {
+                    MouseButtonReleasedEvent mouseReleasedEvent(button);
+                    Application::Get().OnEvent(mouseReleasedEvent);
+                    break;
+                }
+            }
         });
 
         glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)

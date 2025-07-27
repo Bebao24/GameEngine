@@ -76,20 +76,16 @@ void SandboxApp::OnEvent(Engine::Event& event)
         // ENGINE_LOG_TRACE("Mouse x: %f, y: %f", mouseEvent.GetMouseX(), mouseEvent.GetMouseY());
     }
 
-    if (event.GetEventType() == Engine::EventType::MouseButton)
+    if (event.GetEventType() == Engine::EventType::MouseButtonPressed)
     {
-        auto& mouseEvent = static_cast<Engine::MouseButtonEvent&>(event);
-        (void)mouseEvent;
-
+        auto& mouseEvent = static_cast<Engine::MouseButtonPressedEvent&>(event);
         switch (mouseEvent.GetMouseButton())
         {
         case ENGINE_MOUSE_BUTTON_LEFT:
-            // ENGINE_LOG_TRACE("Left mouse button pressed!");
+            ENGINE_LOG_TRACE("Mouse button left pressed!");
             break;
         case ENGINE_MOUSE_BUTTON_RIGHT:
-            // ENGINE_LOG_TRACE("Right mouse button pressed!");
-            break;
-        default:
+            ENGINE_LOG_TRACE("Mouse button right pressed!");
             break;
         }
     }

@@ -8,7 +8,8 @@ namespace Engine
         WindowClose,
         KeyPressed,
         MouseMoved,
-        MouseButton,
+        MouseButtonPressed,
+        MouseButtonReleased,
         MouseScrolled
     };
 
