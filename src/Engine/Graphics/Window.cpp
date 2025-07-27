@@ -120,6 +120,16 @@ namespace Engine
             Application::Get().OnEvent(event);
         });
 
+        glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int actions, int mods)
+        {
+            (void)window;
+            (void)actions;
+            (void)mods;
+
+            MouseButtonEvent event(button);
+            Application::Get().OnEvent(event);
+        });
+
     }
 
     void Window::PollEvents() const

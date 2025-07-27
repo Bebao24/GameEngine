@@ -18,5 +18,20 @@ namespace Engine
     private:
         float m_mouseX, m_mouseY;
     };
+
+    class MouseButtonEvent : public Event
+    {
+    public:
+        MouseButtonEvent(int button)
+            :m_Button(button) {}
+
+        int GetMouseButton() const { return m_Button; }
+
+        EventType GetEventType() const override { return EventType::MouseButton; }
+        const char* GetEventName() const override { return "MousePressedEvent"; }
+
+    private:
+        int m_Button;
+    };
 };
 

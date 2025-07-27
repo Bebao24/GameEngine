@@ -7,7 +7,8 @@ namespace Engine
         None = 0,
         WindowClose,
         KeyPressed,
-        MouseMoved
+        MouseMoved,
+        MouseButton,
     };
 
     class Event
