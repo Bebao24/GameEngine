@@ -9,6 +9,7 @@ namespace Engine
         KeyPressed,
         MouseMoved,
         MouseButton,
+        MouseScrolled
     };
 
     class Event

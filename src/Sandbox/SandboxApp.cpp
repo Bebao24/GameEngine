@@ -84,14 +84,20 @@ void SandboxApp::OnEvent(Engine::Event& event)
         switch (mouseEvent.GetMouseButton())
         {
         case ENGINE_MOUSE_BUTTON_LEFT:
-            ENGINE_LOG_TRACE("Left mouse button pressed!");
+            // ENGINE_LOG_TRACE("Left mouse button pressed!");
             break;
         case ENGINE_MOUSE_BUTTON_RIGHT:
-            ENGINE_LOG_TRACE("Right mouse button pressed!");
+            // ENGINE_LOG_TRACE("Right mouse button pressed!");
             break;
         default:
             break;
         }
+    }
+
+    if (event.GetEventType() == Engine::EventType::MouseScrolled)
+    {
+        auto& mouseEvent = static_cast<Engine::MouseScrolledEvent&>(event);
+        ENGINE_LOG_TRACE("Scrolled! X offset: %f, Y: %f", mouseEvent.GetXOffset(), mouseEvent.GetYOffset());
     }
 }
 

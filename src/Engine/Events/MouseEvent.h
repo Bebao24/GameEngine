@@ -33,5 +33,21 @@ namespace Engine
     private:
         int m_Button;
     };
+
+    class MouseScrolledEvent : public Event
+    {
+    public:
+        MouseScrolledEvent(float xOffset, float yOffset)
+            :m_xOffset(xOffset), m_yOffset(yOffset) {}
+
+        float GetXOffset() const { return m_xOffset; }
+        float GetYOffset() const { return m_yOffset; }
+
+        EventType GetEventType() const override { return EventType::MouseScrolled; }
+        const char* GetEventName() const override { return "MouseScrolledEvent"; }
+
+    private:
+        float m_xOffset, m_yOffset;
+    };
 };
 

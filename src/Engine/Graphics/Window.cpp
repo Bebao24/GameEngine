@@ -130,6 +130,13 @@ namespace Engine
             Application::Get().OnEvent(event);
         });
 
+        glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
+        {
+            (void)window;
+            
+            MouseScrolledEvent event((float)xOffset, (float)yOffset);
+            Application::Get().OnEvent(event);
+        });
     }
 
     void Window::PollEvents() const
