@@ -1,5 +1,5 @@
 #pragma once
-#include <Engine/Events/Event.h>
+#include <Engine/Engine.h>
 
 namespace Engine
 {
@@ -13,8 +13,12 @@ namespace Engine
 
         virtual void OnEvent(Event& event) = 0;
 
+        Window& GetWindow() const { return *m_Window; }
+
     private:
         static Application* s_Instance;
+
+        Window* m_Window;
     };
 };
 

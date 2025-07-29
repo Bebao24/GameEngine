@@ -1,7 +1,6 @@
 #include "SandboxApp.h"
 
 SandboxApp::SandboxApp()
-    :m_Window(640, 480, "Engine")
 {
 
 }
@@ -14,11 +13,11 @@ SandboxApp::~SandboxApp()
 void SandboxApp::Start()
 {
     // Initialize everything
-    Engine::Input::Init(&m_Window);
-    Engine::Renderer::Init(&m_Window);
+    Engine::Input::Init(&Application::Get().GetWindow());
+    Engine::Renderer::Init(&Application::Get().GetWindow());
 
-    [[maybe_unused]] int windowWidth = m_Window.GetWidth();
-    [[maybe_unused]] int windowHeight = m_Window.GetHeight();
+    [[maybe_unused]] int windowWidth  = Application::Get().GetWindow().GetWidth();
+    [[maybe_unused]] int windowHeight = Application::Get().GetWindow().GetHeight();
 
     // Create a camera
     m_Camera = Engine::Camera(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
