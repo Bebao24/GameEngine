@@ -13,6 +13,15 @@ namespace Engine
 
         // Create a window
         m_Window = new Window(640, 480, "Engine");
+
+        // Initialize everything
+        Engine::Input::Init(m_Window);
+        Engine::Renderer::Init(m_Window);
+
+        // Create a camera
+        int windowWidth = m_Window->GetWidth();
+        int windowHeight = m_Window->GetHeight();
+        m_Camera = new Camera(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
     }
 
     Application::~Application()

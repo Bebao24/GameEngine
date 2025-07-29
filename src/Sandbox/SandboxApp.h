@@ -12,8 +12,8 @@ public:
     void OnEvent(Engine::Event& event) override;
 
 private:
-    Engine::Camera m_Camera;
     Engine::Texture m_Texture;
+    Engine::Camera m_Camera;
 };
 
 

@@ -14,11 +14,13 @@ namespace Engine
         virtual void OnEvent(Event& event) = 0;
 
         Window& GetWindow() const { return *m_Window; }
+        Camera& GetCamera() const { return *m_Camera; }
 
     private:
         static Application* s_Instance;
 
         Window* m_Window;
+        Camera* m_Camera;
     };
 };
 

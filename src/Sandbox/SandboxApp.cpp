@@ -12,18 +12,11 @@ SandboxApp::~SandboxApp()
 
 void SandboxApp::Start()
 {
-    // Initialize everything
-    Engine::Input::Init(&Application::Get().GetWindow());
-    Engine::Renderer::Init(&Application::Get().GetWindow());
-
-    [[maybe_unused]] int windowWidth  = Application::Get().GetWindow().GetWidth();
-    [[maybe_unused]] int windowHeight = Application::Get().GetWindow().GetHeight();
-
-    // Create a camera
-    m_Camera = Engine::Camera(0.0f, (float)windowWidth, 0.0f, (float)windowHeight);
-
     // Load in a texture
     m_Texture.Load("Assets/Textures/OpenGL.png");
+
+    // Get the camera
+    m_Camera = Application::Get().GetCamera();
 }
 
 void SandboxApp::Update(float deltaTime)
