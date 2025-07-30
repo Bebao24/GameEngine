@@ -12,6 +12,7 @@ namespace Engine
 
         Camera() = default;
 
+        void SetProjection(float left, float right, float top, float bottom);
         void SetPosition(const Math::Vector2& position);
         void SetRotation(float rotation);
 

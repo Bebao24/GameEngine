@@ -9,6 +9,11 @@ namespace Engine
         m_View = glm::mat4(1.0f);
     }
 
+    void Camera::SetProjection(float left, float right, float top, float bottom)
+    {
+        m_Proj = glm::ortho(left, right, bottom, top);
+    }
+
     void Camera::SetPosition(const Math::Vector2& position)
     {
         m_Position.x = position.x;

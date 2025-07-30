@@ -81,6 +81,12 @@ void SandboxApp::OnEvent(Engine::Event& event)
     if (event.GetEventType() == Engine::EventType::WindowResized)
     {
         auto& windowEvent = static_cast<Engine::WindowResizedEvent&>(event);
+
+        // Set the camera projection
+        float windowWidth = (float)windowEvent.GetWidth();
+        float windowHeight = (float)windowEvent.GetHeight();
+        m_Camera.SetProjection(0, windowWidth, 0, windowHeight);
+
         ENGINE_LOG_TRACE("Window resized! New resolution: %dx%d", windowEvent.GetWidth(), windowEvent.GetHeight());
     }
 }
