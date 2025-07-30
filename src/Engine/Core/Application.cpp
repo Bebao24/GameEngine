@@ -27,6 +27,7 @@ namespace Engine
     Application::~Application()
     {
         delete m_Window;
+        delete m_Camera;
         s_Instance = nullptr;
     }
 };
