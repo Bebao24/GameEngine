@@ -2,6 +2,7 @@
 #include <Engine/Core/Log.h>
 #include <Engine/Events/KeyPressedEvent.h>
 #include <Engine/Events/MouseEvent.h>
+#include <Engine/Events/WindowEvent.h>
 #include <Engine/Core/Application.h>
 
 #include <glad/glad.h>
@@ -97,6 +98,10 @@ namespace Engine
             WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
             data.width = width;
             data.height = height;
+
+            // Window resized event
+            WindowResizedEvent event(width, height);
+            Application::Get().OnEvent(event);
         });
 
         // Handle events

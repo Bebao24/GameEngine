@@ -87,5 +87,11 @@ void SandboxApp::OnEvent(Engine::Event& event)
         auto& mouseEvent = static_cast<Engine::MouseScrolledEvent&>(event);
         ENGINE_LOG_TRACE("Scrolled! X offset: %f, Y: %f", mouseEvent.GetXOffset(), mouseEvent.GetYOffset());
     }
+
+    if (event.GetEventType() == Engine::EventType::WindowResized)
+    {
+        auto& windowEvent = static_cast<Engine::WindowResizedEvent&>(event);
+        ENGINE_LOG_TRACE("Window resized! New resolution: %dx%d", windowEvent.GetWidth(), windowEvent.GetHeight());
+    }
 }
 

@@ -15,6 +15,7 @@
 #include <Engine/Events/Event.h>
 #include <Engine/Events/KeyPressedEvent.h>
 #include <Engine/Events/MouseEvent.h>
+#include <Engine/Events/WindowEvent.h>
 
 /* Core */
 #include <Engine/Core/Log.h>
