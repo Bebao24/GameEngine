@@ -4,8 +4,8 @@
 class SandboxApp : public Engine::Application
 {
 public:
-    SandboxApp();
-    ~SandboxApp();
+    SandboxApp() = default;
+    ~SandboxApp() = default;
 
     void Start();
     void Update(float deltaTime);

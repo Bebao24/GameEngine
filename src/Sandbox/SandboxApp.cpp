@@ -1,15 +1,5 @@
 #include "SandboxApp.h"
 
-SandboxApp::SandboxApp()
-{
-
-}
-
-SandboxApp::~SandboxApp()
-{
-
-}
-
 void SandboxApp::Start()
 {
     // Load in a texture
