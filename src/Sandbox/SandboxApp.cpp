@@ -7,6 +7,10 @@ void SandboxApp::Start()
 
     // Get the camera
     m_Camera = Application::Get().GetCamera();
+
+    // Get file's size test
+    uint64_t size = Engine::File::GetFileSize("file.txt");
+    ENGINE_LOG_INFO("File size: %llu", size);
 }
 
 void SandboxApp::Update(float deltaTime)
