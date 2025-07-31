@@ -11,6 +11,14 @@ void SandboxApp::Start()
     // Get file's size test
     uint64_t size = Engine::File::GetFileSize("file.txt");
     ENGINE_LOG_INFO("File size: %llu", size);
+
+    // Binary file reading test
+    auto binary = Engine::File::ReadBinaryFile("file.txt");
+
+    for (uint64_t i = 0; i < size; i++)
+    {
+        ENGINE_LOG_INFO("File binary content [%d]: 0x%x", i, binary.at(i));
+    }
 }
 
 void SandboxApp::Update(float deltaTime)

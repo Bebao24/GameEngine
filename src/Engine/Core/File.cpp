@@ -49,5 +49,27 @@ namespace Engine
 
         return size;
     }
+
+    std::vector<uint8_t> File::ReadBinaryFile(const std::string& filePath)
+    {
+        // Open the file
+        std::ifstream file(filePath, std::ios::binary);
+
+        // Check for errors
+        if (!file.is_open())
+        {
+            ENGINE_LOG_ERROR("Failed to open file %s", filePath);
+            return {};
+        }
+
+        // Get the file size
+        uint64_t fileSize = GetFileSize(filePath);
+
+        // Create a binary array
+        std::vector<uint8_t> buffer(fileSize);
+        file.read(reinterpret_cast<char*>(buffer.data()), fileSize);
+
+        return buffer;
+    }
 }
 
