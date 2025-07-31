@@ -20,6 +20,7 @@ Unfortunately, I don't have any plans to support 3D rendering yet.
 - GLAD
 - GLFW
 - STB Image
+- STB True Type
 
 ## License
 This project is licensed under GPL v3 (GNU General Public License v3.0). For more information go to the [LICENSE](LICENSE) file.
