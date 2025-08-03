@@ -12,7 +12,7 @@ namespace Engine
         // Check for errors
         if (!file.is_open())
         {
-            ENGINE_LOG_ERROR("Failed to open file %s", filePath);
+            ENGINE_LOG_ERROR("Failed to open file %s", filePath.c_str());
             return 0;
         }
 
@@ -38,7 +38,7 @@ namespace Engine
         // Check for errors
         if (!file.is_open())
         {
-            ENGINE_LOG_ERROR("Failed to open file %s", filePath);
+            ENGINE_LOG_ERROR("Failed to open file %s", filePath.c_str());
             return 0; // TODO
         }
 
@@ -58,7 +58,7 @@ namespace Engine
         // Check for errors
         if (!file.is_open())
         {
-            ENGINE_LOG_ERROR("Failed to open file %s", filePath);
+            ENGINE_LOG_ERROR("Failed to open file %s", filePath.c_str());
             return {};
         }
 
