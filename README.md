@@ -7,8 +7,8 @@ It uses OpenGL for rendering and GLFW for creating window.
 For now, you probably can't use this game engine since there's no documentations. <br>
 
 ### Platform (Operating systems)
-Currently, this game engine is only supporting linux (or at least natively).
-I think it will work with MacOS. I haven't tested it yet.
+Currently, this game engine is only supporting linux and MacOS. It is developed on Linux mainly.
+I have tested this on MacOS, after some patches, I can comfirm that it works perfectly.
 On Windows, you cannot compile this since you will need GLFW installed on your system.
 
 ## Plans
