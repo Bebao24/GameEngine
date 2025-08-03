@@ -1,5 +1,6 @@
 #include "Number.h"
 #include <cmath>
+#include <algorithm>
 
 namespace Engine
 {
