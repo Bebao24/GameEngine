@@ -1,8 +1,17 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -O2 -std=c++20 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image -I src/vendor/stb_truetype
+UNAME_S = $(shell uname -s)
+
+ifeq ($(UNAME_S), Darwin)
+	echo "This is MacOS"
+	CXXFLAGS = -Wall -Wextra -O2 -std=c++20 -MMD -MP -I /opt/homebrew/include -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image -I src/vendor/stb_truetype
+	CFLAGS = -Wall -Wextra -O2 -std=c11 -MMD -MP -I /opt/homebrew/include -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image
+else
+	CXXFLAGS = -Wall -Wextra -O2 -std=c++20 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image -I src/vendor/stb_truetype
+	CFLAGS = -Wall -Wextra -O2 -std=c11 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image
+endif
+
 
 CC = gcc
-CFLAGS = -Wall -Wextra -O2 -std=c11 -MMD -MP -I src/ -I src/vendor/glad/include -I src/vendor -I src/vendor/stb_image
 
 LD = g++
 LDFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
