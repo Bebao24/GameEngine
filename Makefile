@@ -17,7 +17,6 @@ endif
 CC = gcc
 
 LD = g++
-LDFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 
 CPP_SOURCES := $(shell find src -name "*.cpp")
 CPP_OBJECTS := $(patsubst src/%.cpp, build/objects/cpp/%.o, $(CPP_SOURCES))
