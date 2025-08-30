@@ -22,5 +22,10 @@ Unfortunately, I don't have any plans to support 3D rendering yet.
 - STB Image
 - STB True Type
 
+## Compilation & running
+Compilation is quite simple. Just run `make`, and if everything is installed, it should compile
+
+The output is in the `build/engine` directory
+
 ## License
 This project is licensed under GPL v3 (GNU General Public License v3.0). For more information go to the [LICENSE](LICENSE) file.
